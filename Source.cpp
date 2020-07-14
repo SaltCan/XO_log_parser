@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include <string>
 #include <list>
 #include <algorithm>
@@ -95,10 +96,10 @@ int main() {
 	while (!fin.eof()) {
 		getline(fin, buffer);
 		size_t tmp1 = buffer.find("starting level");
-		if ((buffer.find("levels/maps/hangar") == string::npos) && (buffer.find("levels/maps/red_rocks_territory") == string::npos)) {  //начало боя
+		if ((buffer.find("levels/maps/hangar") == string::npos) && (buffer.find("levels/maps/red_rocks_territory") == string::npos)) {  //Г­Г Г·Г Г«Г® ГЎГ®Гї
 			if (tmp1 != string::npos) {
-				fout << "Бой на карте " << getmapname(buffer) << endl;
-				cout << "Бой на карте " << getmapname(buffer) << endl;
+				fout << "ГЃГ®Г© Г­Г  ГЄГ Г°ГІГҐ " << getmapname(buffer) << endl;
+				cout << "ГЃГ®Г© Г­Г  ГЄГ Г°ГІГҐ " << getmapname(buffer) << endl;
 				list<player> newplayerlist;
 
 				while ((buffer.size() != 0) && (!fin.eof())) {
@@ -107,7 +108,7 @@ int main() {
 						string nickname = getnickname(buffer);
 						string gunnm = getweaponname(buffer);
 						double damage = getdamage(buffer);
-						//fout << "  Игрок " << nickname << " Нанёс " << damage << " едениц урона оружием " << gunnm << endl;
+						//fout << "  Г€ГЈГ°Г®ГЄ " << nickname << " ГЌГ Г­ВёГ± " << damage << " ГҐГ¤ГҐГ­ГЁГ¶ ГіГ°Г®Г­Г  Г®Г°ГіГ¦ГЁГҐГ¬ " << gunnm << endl;
 						AccountDmg(newplayerlist, nickname, gunnm, damage);
 					}
 					if (buffer.size() == 0) {
@@ -126,4 +127,5 @@ int main() {
 		}
 	}
 	return 0;
+	system("pause");
 }
