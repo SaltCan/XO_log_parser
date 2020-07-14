@@ -100,10 +100,14 @@ int main() {
 			if (tmp1 != string::npos) {
 				fout << "Бой на карте " << getmapname(buffer);
 				cout << "Бой на карте " << getmapname(buffer);
-				if (buffer.find("AssaultBestOf3") != string::npos)
+				if (buffer.find("AssaultBestOf3") != string::npos) {
 					cout << " (КВ)" << endl;
-				else
+					fout << " (КВ)" << endl;
+				}
+				else {
 					cout << " (Рандом)" << endl;
+					fout << " (Рандом)" << endl;
+				}
 				list<player> newplayerlist;
 
 				while ((buffer.size() != 0) && (!fin.eof())) {
