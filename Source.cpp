@@ -96,10 +96,14 @@ int main() {
 	while (!fin.eof()) {
 		getline(fin, buffer);
 		size_t tmp1 = buffer.find("starting level");
-		if ((buffer.find("levels/maps/hangar") == string::npos) && (buffer.find("levels/maps/red_rocks_territory") == string::npos)) {  //íà÷àëî áîÿ
+		if ((buffer.find("levels/maps/hangar") == string::npos) && (buffer.find("levels/maps/red_rocks_territory") == string::npos)) {  //начало боя
 			if (tmp1 != string::npos) {
-				fout << "Áîé íà êàðòå " << getmapname(buffer) << endl;
-				cout << "Áîé íà êàðòå " << getmapname(buffer) << endl;
+				fout << "Бой на карте " << getmapname(buffer);
+				cout << "Бой на карте " << getmapname(buffer);
+				if (buffer.find("AssaultBestOf3") != string::npos)
+					cout << " (КВ)" << endl;
+				else
+					cout << " (Рандом)" << endl;
 				list<player> newplayerlist;
 
 				while ((buffer.size() != 0) && (!fin.eof())) {
@@ -108,7 +112,7 @@ int main() {
 						string nickname = getnickname(buffer);
 						string gunnm = getweaponname(buffer);
 						double damage = getdamage(buffer);
-						//fout << "  Èãðîê " << nickname << " Íàí¸ñ " << damage << " åäåíèö óðîíà îðóæèåì " << gunnm << endl;
+						//fout << "  Игрок " << nickname << " Нанёс " << damage << " едениц урона оружием " << gunnm << endl;
 						AccountDmg(newplayerlist, nickname, gunnm, damage);
 					}
 					if (buffer.size() == 0) {
