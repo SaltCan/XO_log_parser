@@ -100,7 +100,7 @@ int main() {
 			if (tmp1 != string::npos) {
 				fout << "Бой на карте " << getmapname(buffer);
 				cout << "Бой на карте " << getmapname(buffer);
-				if (buffer.find("AssaultBestOf3") != string::npos) {
+				if (buffer.find("BestOf3") != string::npos) {
 					cout << " (КВ)" << endl;
 					fout << " (КВ)" << endl;
 				}
